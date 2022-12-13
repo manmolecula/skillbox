@@ -42,16 +42,18 @@ ul {
 img {
     max-width: 100%;
 }
+button{
+    line-height: 100%;
+}
 html {
     background-color: #e5e5e5;
     font-family: sans-serif;
 }
+:root{
+    --opacity:0.5;
+}
 .container{
     max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 .header-container {
     margin-top: 30px;
@@ -69,9 +71,17 @@ html {
     font-size: 20px;
     line-height: 20px;
 }
+.info{
+    margin-left: auto;
+    font-family: "MullerRegular";
+    transition: opacity 0.3s;
+}
 .info-link{
     color: #CC9933;
     margin-left: 7px;
+}
+.info:hover{
+    opacity: var(--opacity);
 }
 .nav{
     background-color: #fff;
@@ -79,15 +89,6 @@ html {
     border-radius: 15px;
     margin-top: 30px;
     height: 70px;
-    max-width: 1200px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-.info{
-    margin-left: auto;
-    font-family: "MullerRegular";
 }
 .nav,
 .nav-list,
@@ -101,7 +102,7 @@ html {
     padding: 27px 0px 27px 0px;
     margin-left: 45px;
     min-width: 46px;
-    transition: 0.3s;
+    transition: transform 0.3s;
 }
 .nav-item:hover{
     transform: scale(1.2);
@@ -128,10 +129,10 @@ html {
     border-radius: 12px;
     border-color: #CC9933;
     white-space: nowrap;
-    transition: transform 0.3s;
+    transition: opacity 0.3s;
 }
 .link:hover{
-    transform: rotate(180deg);
+    opacity: var(--opacity);
 }
 .link:not(:last-child){
     margin-left: 114px;
@@ -155,12 +156,6 @@ h2{
     display: flex;
     justify-content: space-between;
     width: 1170px;
-}
-.section-block-left{
-    width: 573px;
-}
-.section-block-right{
-    width: 573px;
 }
 .section-block{
     display: flex;
@@ -188,6 +183,10 @@ h2{
     color: #F0BF5F;
     font-family: "MullerRegular";
     font-size: 16px;
+    transition: opacity 0.3s;
+}
+.section-block-info:hover{
+    opacity: var(--opacity);
 }
 .section-block1{
     background: linear-gradient(90deg, rgba(48, 64, 89, 0.84) -2.9%, rgba(53, 65, 83, 0) 65.7%), url(/img/mal_isl.jpg);
@@ -218,20 +217,10 @@ h2{
     font-family: "MullerRegular";
     font-size: 16px;
     line-height: 32px;
-    max-width: 888px;
 }
-.section-utilities-blocks{
-    display: flex;
-    flex-wrap: wrap;
-}
-.section-utilities-block{
-    flex: 1 1 40%;
-}
+
 .section-utilities-block:not(:nth-child(1),:nth-child(2)){
     margin-top:24px
-}
-.section-utilities-block:nth-child(2n-1){
-    margin-right: 25px;
 }
 .section-utilities-img1{
     height: 165px;
@@ -268,6 +257,11 @@ h2{
     font-size: 20px;
     color:#CC9933;
     padding-top: 26px;
+    transition: opacity 0.3s;
+}
+.section-utilities-link:hover{
+    --opacity:0.8;
+    opacity: var(--opacity);
 }
 .section-utilities-text{
     font-family: "MullerRegular";
@@ -275,14 +269,10 @@ h2{
     line-height: 32px;
     padding-right: 126px;
 }
-.section-advantages-blocks{
-    display: flex;
-    flex-wrap: wrap;
-}
-.section-advantages-block{
-    flex: 1 1 20%;
+.section-background-block{
     background-color: #fff;
     border-radius: 15px;
+    height: 100%;
 }
 .section-advantages-block:not(:nth-child(1),:nth-child(3),:nth-child(5),:nth-child(7)){
     margin-top:24px
@@ -295,27 +285,21 @@ h2{
 }
 .section-advantages-block:nth-child(3){
     order:2;
-    margin-left: 22px;
 }
 .section-advantages-block:nth-child(4){
     order:6;
-    margin-left: 22px;
 }
 .section-advantages-block:nth-child(5){
     order:3;
-    margin-left: 22px;
 }
 .section-advantages-block:nth-child(6){
     order:7;
-    margin-left: 22px;
 }
 .section-advantages-block:nth-child(7){
     order:4;
-    margin-left: 22px;
 }
 .section-advantages-block:nth-child(8){
     order:8;
-    margin-left: 22px;
 }
 .section-advantages-img{
     margin-left: 45px;
@@ -327,13 +311,8 @@ h2{
     font-size: 16px;
     line-height: 32px;
 }
-.razmeshenie-blocks{
-    display: flex;
-    flex-wrap: wrap;
-}
 .razmeshenie-block{
-    flex: 1 1 30%;
-    margin-right: 24px;
+    position: relative;
 }
 .razmeshenie-block:not(:nth-child(1),:nth-child(2),:nth-child(3)){
     margin-top: 24px;
@@ -389,14 +368,30 @@ h2{
 .razmeshenie-block-img9{
     height: 440px;
     background-image: url(/img/razm-info.jpg);
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
     background-size: cover;
+    position: relative;
+    transition: filter 0.3s;
+}
+.razmeshenie-block-img9:hover{
+    filter: brightness(60%);
+}
+.razmeshenie-block-about::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .razmeshenie-block9-gen{
-    display: flex;
-    justify-content: center;
-    margin-top: 373px;
+    position: absolute;
+    bottom: 15%;
+    left: 18%;
+    text-align: center;
 }
+
 .razmeshenie-block-about{
     font-family: "MullerMedium";
     font-size: 20px; 
@@ -444,6 +439,10 @@ h2{
     border: 1px #CC9933 solid;
     border-radius: 10px;
     padding: 13px 20px;
+    transition: opacity 0.3s;
+}
+.razmeshenie-block-btn:hover{
+    opacity: var(--opacity);
 }
 .form{
     background-color: #E9E9E9;
@@ -477,7 +476,6 @@ input{
 }
 .btn-submit{
     padding: 13px 30px;
-    text-align: center;
     border: 1px solid #CC9933;
     background-color: #fff;
     border-radius: 15px;
@@ -486,6 +484,10 @@ input{
     color: #CC9933;
     cursor: pointer;
     margin-left: 37px;
+    transition: opacity .3s;
+}
+.btn-submit:hover{
+    opacity: var(--opacity);
 }
 .number-input{
     max-width: 121px;
@@ -501,7 +503,6 @@ opacity: 1;
 .contacts-gen{
     background-color: #fff;
     height: 618px;
-    display: flex;
     border-radius: 15px;
 }
 .contacts-ul{
@@ -551,11 +552,14 @@ opacity: 1;
 .gen-btn-div{
     margin-top: 72px;
     margin-left: 74.5px;
+    transition: opacity .3s;
+}
+.gen-btn-div:hover{
+    opacity: var(--opacity);
 }
 .right-side{
-    max-width: 653px;
+    padding-right: 45px;
     margin-top: 45px;
-    margin-left: 52px;
 }
 .footer-container{
     background-color: #333;
@@ -586,7 +590,6 @@ opacity: 1;
     font-size: 16px;
 }
 .right-side-footer{
-    margin-left: 125px;
     margin-top: 45px;
 }
 .address-footer{
@@ -607,9 +610,7 @@ opacity: 1;
     line-height: 24px;
 }
 .social-media{
-    margin-left: auto;
     margin-top: 45px;
-    margin-right: 45px;
 }
 .social-icons-item:not(:last-child){
     margin-bottom: 20px;
